@@ -1,0 +1,19 @@
+{
+    "name": "molitor/menu",
+    "description": "Menü kezelése",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Molitor István",
+            "email": "istvanmolitor@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Molitor\\Menu\\": "src/"
+        }
+    }
+}
