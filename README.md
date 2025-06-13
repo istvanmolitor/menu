@@ -1,26 +1,15 @@
 # Menü modul
 
-Ezzel a modullal meüket hozhatsz létre a sablonjaidban amikre más modulok fel tudnak iratkozni.
+Ezzel a modullal meüket hozhatsz létre amikre más modulok fel tudnak iratkozni.
 
 ## Telepítés
 
 ### Provider regisztrálása
-config/app.php
+bootstrap/providers.php
 ```php
-'providers' => ServiceProvider::defaultProviders()->merge([
-    /*
-    * Package Service Providers...
-    */
+return [
     \Molitor\Menu\Providers\MenuServiceProvider::class,
-])->toArray(),
-```
-
-### Menü kezelő alias regisztrálása
-config/app.php
-```php
-'aliases' => Facade::defaultAliases()->merge([
-    'Menu' => \Molitor\Menu\Facades\Menu::class,
-])->toArray(),
+];
 ```
 
 ### Config file létrehozása
@@ -29,3 +18,5 @@ config/app.php
 php artisan vendor:publish
 ```
 Válaszd a következőt: Molitor\Menu\Providers\MenuServiceProvider
+
+Az így publikált config/menu.php fileban felsorolhatod a menu builder osztályokat amik felépítik a menüket.

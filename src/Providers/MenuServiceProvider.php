@@ -26,9 +26,5 @@ class MenuServiceProvider extends ServiceProvider
         $this->app->bind('menu', function ($app) {
             return new MenuManager();
         });
-
-        $this->app->bind('menuManager', function ($app) {
-            return new MenuManager();
-        });
     }
 }
