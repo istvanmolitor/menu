@@ -1,6 +1,6 @@
 {
-    "name": "molitor/menu",
-    "description": "Menü kezelése",
+    "name": "istvanmolitor/menu",
+    "description": "Menu",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -10,10 +10,18 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
     "autoload": {
         "psr-4": {
             "Molitor\\Menu\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Molitor\\Menu\\Providers\\MenuServiceProvider"
+            ],
+            "aliases": {
+            }
         }
     }
 }
