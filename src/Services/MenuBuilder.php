@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class MenuBuilder
 {
-    public function addResource(Menu $menu, string $routeName, ?Model $model)
+    public function init(Menu $menu, string $name, array $params = []): void
+    {
+
+    }
+
+    public function addResource(Menu $menu, string $routeName, Model|null $model): void
     {
         $menu->addItem('Lista', route($routeName . '.index'))->setIcon('list');
 

@@ -11,7 +11,6 @@ class MenuServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'menu');
 
         Blade::component('menu', Menu::class);
@@ -23,7 +22,7 @@ class MenuServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->bind('menu', function ($app) {
+        $this->app->singleton(MenuManager::class, function ($app) {
             return new MenuManager();
         });
     }

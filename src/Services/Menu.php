@@ -8,12 +8,12 @@ class Menu
 {
     protected array $menuItems = [];
 
-    public function addMenuItem(MenuItem $menuItem)
+    public function addMenuItem(MenuItem $menuItem): void
     {
         $this->menuItems[] = $menuItem;
     }
 
-    public function getByName(string $name): ?MenuItem
+    public function getByName(string $name): MenuItem|null
     {
         /** @var MenuItem $menuItem */
         foreach ($this->menuItems as $menuItem) {
