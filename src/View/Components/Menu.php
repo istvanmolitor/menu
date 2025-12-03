@@ -18,7 +18,7 @@ class Menu extends Component
     public function render(): string
     {
         /** @var MenuManager $menuManager */
-        $menuManager = app('menuManager');
+        $menuManager = app(MenuManager::class);
 
         /** @var \Molitor\Menu\Services\Menu $menu */
         $menu = $menuManager->build($this->name, $this->params);
@@ -28,7 +28,7 @@ class Menu extends Component
         }
 
         return view($this->template, [
-                'menu' => $menu
-            ])->render();
+            'menu' => $menu
+        ])->render();
     }
 }
