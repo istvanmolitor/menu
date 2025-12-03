@@ -11,10 +11,6 @@ class MenuServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'menu');
-
-        Blade::component('menu', Menu::class);
-
         $this->publishes([
             __DIR__ . '/../config/menu.php' => config_path('menu.php'),
         ], 'menu');

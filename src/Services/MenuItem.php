@@ -6,11 +6,12 @@ namespace Molitor\Menu\Services;
 
 class MenuItem extends Menu
 {
-    protected ?string $name = null;
+    protected string|null $name = null;
     protected string $label;
-    protected ?string $href = null;
-    protected ?string $icon = null;
+    protected string|null $url = null;
+    protected string|null $icon = null;
     protected bool $isActive = false;
+    protected bool $isExternal = false;
 
     function __construct(string $label)
     {
@@ -60,20 +61,20 @@ class MenuItem extends Menu
     }
 
     /**
-     * @param string|null $href
+     * @param string|null $url
      */
-    public function setHref(?string $href): self
+    public function setUrl(string|null $url): self
     {
-        $this->href = $href;
+        $this->url = $url;
         return $this;
     }
 
     /**
      * @return string|null
      */
-    public function getHref(): ?string
+    public function getUrl(): ?string
     {
-        return $this->href;
+        return $this->url;
     }
 
     /**
@@ -110,7 +111,7 @@ class MenuItem extends Menu
         if ($this->isActive) {
             return true;
         }
-        return url()->current() == $this->href;
+        return url()->current() == $this->url;
     }
 
     public function setActiveByName(array|string $name): void
@@ -123,12 +124,28 @@ class MenuItem extends Menu
         parent::setActiveByName($name);
     }
 
+    /**
+     * @param bool $isExternal
+     */
+    public function setIsExternal(bool $isExternal): void
+    {
+        $this->isExternal = $isExternal;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isExternal(): bool
+    {
+        return $this->isExternal;
+    }
+
     public function toArray(): array
     {
         return [
             //'name' => $this->name,
             'title' => $this->label,
-            'href' => $this->href,
+            'href' => $this->url,
             'icon' => $this->icon,
             'isActive' => $this->isActive(),
         ];

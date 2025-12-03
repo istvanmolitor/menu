@@ -28,7 +28,7 @@ class Menu
     public function addItem(string $label, ?string $href): MenuItem
     {
         $menuItem = new MenuItem($label);
-        $menuItem->setHref($href);
+        $menuItem->setUrl($href);
         $this->addMenuItem($menuItem);
 
         return $menuItem;
@@ -40,28 +40,6 @@ class Menu
     public function getMenuItems(): array
     {
         return $this->menuItems;
-    }
-
-    public function getNumMenuItems(): int
-    {
-        return count($this->menuItems);
-    }
-
-    public function render($view): string
-    {
-        return view($view, [
-            'menu' => $this
-        ])->render();
-    }
-
-    public function buttons(): string
-    {
-        return $this->render('menu::buttons');
-    }
-
-    public function __toString()
-    {
-        return $this->render('menu::buttons');
     }
 
     public function setActiveByName(array|string $name): void
@@ -81,5 +59,10 @@ class Menu
         }
 
         return $items;
+    }
+
+    public function count(): int
+    {
+        return count($this->menuItems);
     }
 }
