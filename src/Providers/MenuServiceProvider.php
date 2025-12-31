@@ -2,10 +2,8 @@
 
 namespace Molitor\Menu\Providers;
 
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Molitor\Menu\Services\MenuManager;
-use Molitor\Menu\View\Components\Menu;
 
 class MenuServiceProvider extends ServiceProvider
 {
@@ -18,8 +16,12 @@ class MenuServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->singleton(MenuManager::class, function ($app) {
+        $this->app->singleton('menu', function ($app) {
             return new MenuManager();
+        });
+
+        $this->app->singleton(MenuManager::class, function ($app) {
+            return app('menu');
         });
     }
 }
