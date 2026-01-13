@@ -142,12 +142,18 @@ class MenuItem extends Menu
 
     public function toArray(): array
     {
+        $items = [];
+        foreach ($this->menuItems as $menuItem) {
+            $items[] = $menuItem->toArray();
+        }
+
         return [
             //'name' => $this->name,
             'title' => $this->label,
             'href' => $this->url,
             'icon' => $this->icon,
             'isActive' => $this->isActive(),
+            'items' => $items,
         ];
     }
 }
