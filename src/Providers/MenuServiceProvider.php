@@ -12,6 +12,8 @@ class MenuServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/menu.php' => config_path('menu.php'),
         ], 'menu');
+
+        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
     }
 
     public function register()
