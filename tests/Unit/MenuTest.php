@@ -15,7 +15,7 @@ class MenuTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->menu = new Menu();
+        $this->menu = new Menu;
     }
 
     public function test_can_add_menu_item(): void
@@ -164,4 +164,3 @@ class MenuTest extends TestCase
         $this->assertEquals('Parent', $array[0]['title']);
     }
 }
-

@@ -12,8 +12,7 @@ class MenuController extends Controller
 {
     public function __construct(
         private MenuManager $menuManager
-    ) {
-    }
+    ) {}
 
     public function show(string $name): JsonResponse
     {

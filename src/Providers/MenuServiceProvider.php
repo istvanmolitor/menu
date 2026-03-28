@@ -10,16 +10,16 @@ class MenuServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/menu.php' => config_path('menu.php'),
+            __DIR__.'/../config/menu.php' => config_path('menu.php'),
         ], 'menu');
 
-        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
     }
 
     public function register()
     {
         $this->app->singleton('menu', function ($app) {
-            return new MenuManager();
+            return new MenuManager;
         });
 
         $this->app->singleton(MenuManager::class, function ($app) {

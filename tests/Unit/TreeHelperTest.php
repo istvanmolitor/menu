@@ -16,12 +16,12 @@ class TreeHelperTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->treeHelper = new TreeHelper();
+        $this->treeHelper = new TreeHelper;
     }
 
     public function test_can_create_tree_helper_without_menu(): void
     {
-        $treeHelper = new TreeHelper();
+        $treeHelper = new TreeHelper;
 
         $this->assertInstanceOf(TreeHelper::class, $treeHelper);
         $this->assertInstanceOf(Menu::class, $treeHelper->getMenu());
@@ -29,7 +29,7 @@ class TreeHelperTest extends TestCase
 
     public function test_can_create_tree_helper_with_menu(): void
     {
-        $menu = new Menu();
+        $menu = new Menu;
         $treeHelper = new TreeHelper($menu);
 
         $this->assertSame($menu, $treeHelper->getMenu());
@@ -214,4 +214,3 @@ class TreeHelperTest extends TestCase
         $this->assertEquals(1, $category2->count());
     }
 }
-

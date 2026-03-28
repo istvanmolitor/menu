@@ -20,7 +20,7 @@ class TestMenuBuilder extends MenuBuilder
 
     public function anotherMenu(Menu $menu, string $param): void
     {
-        $menu->addItem('Another Item', '/another/' . $param);
+        $menu->addItem('Another Item', '/another/'.$param);
     }
 
     public function init(Menu $menu, string $name, array $params = []): void
@@ -37,12 +37,12 @@ class MenuManagerTest extends TestCase
     {
         parent::setUp();
         Config::set('menu', []);
-        $this->menuManager = new MenuManager();
+        $this->menuManager = new MenuManager;
     }
 
     public function test_can_add_menu_builder(): void
     {
-        $builder = new TestMenuBuilder();
+        $builder = new TestMenuBuilder;
         $this->menuManager->addMenuBuilder($builder);
 
         $this->assertInstanceOf(MenuManager::class, $this->menuManager);
@@ -50,7 +50,7 @@ class MenuManagerTest extends TestCase
 
     public function test_build_creates_menu(): void
     {
-        $builder = new TestMenuBuilder();
+        $builder = new TestMenuBuilder;
         $this->menuManager->addMenuBuilder($builder);
 
         $menu = $this->menuManager->build('testMenu');
@@ -60,7 +60,7 @@ class MenuManagerTest extends TestCase
 
     public function test_build_calls_init_method(): void
     {
-        $builder = new TestMenuBuilder();
+        $builder = new TestMenuBuilder;
         $this->menuManager->addMenuBuilder($builder);
 
         $menu = $this->menuManager->build('someMenu');
@@ -73,7 +73,7 @@ class MenuManagerTest extends TestCase
 
     public function test_build_calls_named_method_if_exists(): void
     {
-        $builder = new TestMenuBuilder();
+        $builder = new TestMenuBuilder;
         $this->menuManager->addMenuBuilder($builder);
 
         $menu = $this->menuManager->build('testMenu');
@@ -88,7 +88,7 @@ class MenuManagerTest extends TestCase
 
     public function test_build_does_not_fail_if_method_does_not_exist(): void
     {
-        $builder = new TestMenuBuilder();
+        $builder = new TestMenuBuilder;
         $this->menuManager->addMenuBuilder($builder);
 
         $menu = $this->menuManager->build('nonExistentMenu');
@@ -99,7 +99,7 @@ class MenuManagerTest extends TestCase
 
     public function test_build_passes_parameters_to_method(): void
     {
-        $builder = new TestMenuBuilder();
+        $builder = new TestMenuBuilder;
         $this->menuManager->addMenuBuilder($builder);
 
         $menu = $this->menuManager->build('anotherMenu', ['test-param']);
@@ -112,7 +112,7 @@ class MenuManagerTest extends TestCase
 
     public function test_magic_call_method_builds_menu(): void
     {
-        $builder = new TestMenuBuilder();
+        $builder = new TestMenuBuilder;
         $this->menuManager->addMenuBuilder($builder);
 
         $menu = $this->menuManager->testMenu();
@@ -123,7 +123,7 @@ class MenuManagerTest extends TestCase
 
     public function test_magic_call_method_passes_arguments(): void
     {
-        $builder = new TestMenuBuilder();
+        $builder = new TestMenuBuilder;
         $this->menuManager->addMenuBuilder($builder);
 
         $menu = $this->menuManager->anotherMenu('magic-param');
@@ -134,9 +134,10 @@ class MenuManagerTest extends TestCase
 
     public function test_multiple_builders_are_called(): void
     {
-        $builder1 = new TestMenuBuilder();
-        $builder2 = new class extends MenuBuilder {
-            public function testMenu(Menu $menu): void
+        $builder1 = new TestMenuBuilder;
+        $builder2 = new class extends MenuBuilder
+        {
+            public function test_menu(Menu $menu): void
             {
                 $menu->addItem('Builder 2 Item', '/builder2');
             }
@@ -151,4 +152,3 @@ class MenuManagerTest extends TestCase
         $this->assertEquals(4, $menu->count());
     }
 }
-

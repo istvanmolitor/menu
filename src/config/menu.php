@@ -1,6 +1,6 @@
 <?php
 
-//Menü builderek listája:
+// Menü builderek listája:
 return [
 
 ];

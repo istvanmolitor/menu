@@ -11,7 +11,7 @@ class MenuManager
     public function __construct()
     {
         foreach (config('menu', []) as $menuBuilderClass) {
-            $this->addMenuBuilder(new $menuBuilderClass());
+            $this->addMenuBuilder(new $menuBuilderClass);
         }
     }
 
@@ -22,7 +22,7 @@ class MenuManager
 
     public function build(string $name, array $params = []): Menu
     {
-        $menu = new Menu();
+        $menu = new Menu;
         /** @var MenuBuilder $menuBuilder */
         foreach ($this->menuBuilders as $menuBuilder) {
             $menuBuilder->init($menu, $name, $params);
@@ -31,6 +31,7 @@ class MenuManager
                 call_user_func_array([$menuBuilder, $name], array_merge([$menu], $params));
             }
         }
+
         return $menu;
     }
 

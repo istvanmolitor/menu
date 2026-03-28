@@ -13,7 +13,7 @@ class Menu
         $this->menuItems[] = $menuItem;
     }
 
-    public function getByName(string $name): MenuItem|null
+    public function getByName(string $name): ?MenuItem
     {
         /** @var MenuItem $menuItem */
         foreach ($this->menuItems as $menuItem) {
@@ -22,6 +22,7 @@ class Menu
                 return $foundMenuItem;
             }
         }
+
         return null;
     }
 
@@ -34,9 +35,6 @@ class Menu
         return $menuItem;
     }
 
-    /**
-     * @return array
-     */
     public function getMenuItems(): array
     {
         return $this->menuItems;

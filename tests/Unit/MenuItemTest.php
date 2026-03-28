@@ -239,4 +239,3 @@ class MenuItemTest extends TestCase
         $this->assertContains($childItem, $parentItem->getMenuItems());
     }
 }
-

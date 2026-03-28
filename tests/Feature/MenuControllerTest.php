@@ -18,9 +18,7 @@ class TestMenuBuilder extends MenuBuilder
         $menu->addItem('About', '/about');
     }
 
-    public function init(Menu $menu, string $name, array $params = []): void
-    {
-    }
+    public function init(Menu $menu, string $name, array $params = []): void {}
 }
 
 class MenuControllerTest extends TestCase
@@ -34,7 +32,7 @@ class MenuControllerTest extends TestCase
 
         // Frissítsük a MenuManager-t a konténerben, hogy az új config-ot használja
         $this->app->singleton('menu', function ($app) {
-            return new MenuManager();
+            return new MenuManager;
         });
     }
 
