@@ -148,7 +148,7 @@ class MenuManagerTest extends TestCase
 
         $menu = $this->menuManager->build('testMenu');
 
-        // Init from builder1, testMenu from builder1, init from builder2, testMenu from builder2
-        $this->assertEquals(4, $menu->count());
+        // builder2 exposes test_menu(), so build('testMenu') does not call it.
+        $this->assertEquals(3, $menu->count());
     }
 }
