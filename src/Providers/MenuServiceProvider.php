@@ -18,13 +18,15 @@ class MenuServiceProvider extends ServiceProvider
 
     public function register()
     {
+        require_once __DIR__.'/../helpers.php';
+
         $this->mergeConfigFrom(__DIR__.'/../config/menu.php', 'menu');
 
-        $this->app->singleton('menu', function ($app) {
+        $this->app->singleton('menu', function () {
             return new MenuManager;
         });
 
-        $this->app->singleton(MenuManager::class, function ($app) {
+        $this->app->singleton(MenuManager::class, function () {
             return app('menu');
         });
     }
