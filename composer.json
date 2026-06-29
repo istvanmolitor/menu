@@ -1,6 +1,7 @@
 {
     "name": "istvanmolitor/menu",
     "description": "Menu",
+    "version": "1.0.0",
     "type": "library",
     "license": "MIT",
     "authors": [
