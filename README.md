@@ -101,3 +101,9 @@ További információ: [tests/README.md](tests/README.md)
 
 - PHP 8.1+
 - Laravel 10.x vagy újabb
+
+## Függőségek
+
+Ez a csomag alapmodul: nem függ más `istvanmolitor/*` csomagtól, ezért önállóan is telepíthető.
+
+- `istvanmolitor/menu` – git@github.com:istvanmolitor/menu.git (ez a csomag maga)
