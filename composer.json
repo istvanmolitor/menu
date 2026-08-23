@@ -1,6 +1,6 @@
 {
     "name": "istvanmolitor/menu",
-    "description": "Menu",
+    "description": "Standalone builder for hierarchical admin/frontend navigation menus, with no dependency on other Molitor packages.",
     "type": "library",
     "license": "MIT",
     "authors": [
